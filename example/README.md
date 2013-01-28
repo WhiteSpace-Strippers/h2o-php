@@ -4,7 +4,7 @@ This directory contains example code covering various aspect of h2o template.
 
 Simple
 =====================
-A simple template displaying a list of users, it demonstrate 
+A simple template displaying a list of users, it demonstrate
 
 - how to setup h2o template and pass view variables to template
 - display variables and using build-in tags and filters
@@ -33,11 +33,11 @@ Demonstrates
 
 - how to use different cache driver
 - bundled cache extension to provide fragment cache to speed up resource intensive operations
-  such as loading complex logic from database
+	such as loading complex logic from database
 
 I18n
 =====================
-Demo to show how to build a internationalized template with h2o by displaying a template 
+Demo to show how to build a internationalized template with h2o by displaying a template
 supporting three languages.
 
 I18n extension also bundled message extraction class to extract translatable strings into

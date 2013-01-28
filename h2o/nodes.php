@@ -4,22 +4,22 @@
 */
 
 class H2o_Node {
-    var $position;
+		var $position;
 	function __construct($argstring) {}
 	
 	function render($context, $stream) {}
 }
 
-class NodeList extends H2o_Node implements IteratorAggregate  {
+class NodeList extends H2o_Node implements IteratorAggregate	{
 	var $parser;
 	var $list;
 	
 	function __construct(&$parser, $initial = null, $position = 0) {
-	    $this->parser = $parser;
-        if (is_null($initial))
-            $initial = array();
-        $this->list = $initial;
-        $this->position = $position;
+			$this->parser = $parser;
+				if (is_null($initial))
+						$initial = array();
+				$this->list = $initial;
+				$this->position = $position;
 	}
 
 	function render($context, $stream) {
@@ -28,44 +28,44 @@ class NodeList extends H2o_Node implements IteratorAggregate  {
 		}
 	}
 	
-    function append($node) {
-        array_push($this->list, $node);
-    }
+		function append($node) {
+				array_push($this->list, $node);
+		}
 
-    function extend($nodes) {
-        array_merge($this->list, $nodes);
-    }
+		function extend($nodes) {
+				array_merge($this->list, $nodes);
+		}
 
-    function getLength() {
-        return count($this->list);
-    }
-    
-    function getIterator() {
-        return new ArrayIterator( $this->list );
-    }
+		function getLength() {
+				return count($this->list);
+		}
+		
+		function getIterator() {
+				return new ArrayIterator( $this->list );
+		}
 }
 
 class VariableNode extends H2o_Node {
-    private $filters = array();
-    var $variable;
-    
+		private $filters = array();
+		var $variable;
+		
 	function __construct($variable, $filters, $position = 0) {
-        if (!empty($filters))
-            $this->filters = $filters;
+				if (!empty($filters))
+						$this->filters = $filters;
 		$this->variable = $variable;
 	}
 
 	function render($context, $stream) {
-        $value = $context->resolve($this->variable);
-        $value = $context->escape($value, $this->variable);
-        $stream->write($value);
+				$value = $context->resolve($this->variable);
+				$value = $context->escape($value, $this->variable);
+				$stream->write($value);
 	}
 }
 
 class CommentNode extends H2o_Node {}
 
 class TextNode extends H2o_Node {
-    var $content;
+		var $content;
 	function __construct($content, $position = 0) {
 		$this->content = $content;
 		$this->position = $position;
@@ -76,7 +76,7 @@ class TextNode extends H2o_Node {
 	}
 	
 	function is_blank() {
-	    return strlen(trim($this->content));
+			return strlen(trim($this->content));
 	}
 }
 
